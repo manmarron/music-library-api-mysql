@@ -19,15 +19,16 @@ exports.getArtistById = (req, res) => {
             res.status(200).json(artists);
         }
     });
+};
 
-    exports.updateArtist = (req, res) => {
-        const { id } = req.params;
-        Artist.update(req.body, { where: { id } }).then(([rowsUpdated]) => {
-            if (!rowsUpdated) {
-                res.status(404).json({ error: 'The artist could not be found.' });
-            } else {
-                res.status(200).json(rowsUpdated);
-            }
-        });
-    };
+
+exports.updateArtist = (req, res) => {
+    const { id } = req.params;
+    Artist.update(req.body, { where: { id } }).then(([rowsUpdated]) => {
+        if (!rowsUpdated) {
+            res.status(404).json({ error: 'The artist could not be found.' });
+        } else {
+            res.status(200).json(rowsUpdated);
+        }
+    });
 };
